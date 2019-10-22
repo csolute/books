@@ -8,6 +8,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
@@ -19,7 +21,8 @@ import io.restassured.response.Response;
 public class SpringBootBootstrapLiveTest {
 
     private static final String API_ROOT = "http://localhost:9000/api/books";
-
+    private static final Logger logger = LoggerFactory.getLogger(SpringBootBootstrapLiveTest.class);
+    
     @Test
     public void whenGetAllBooks_thenOK() {
         final Response response = RestAssured.get(API_ROOT);
@@ -83,6 +86,8 @@ public class SpringBootBootstrapLiveTest {
         final Book book = createRandomBook();
         final String location = createBookAsUri(book);
 
+        logger.info("thenUpdated: " + location);
+        
         book.setId(Long.parseLong(location.split("api/books/")[1]));
         book.setAuthor("newAuthor");
         Response response = RestAssured.given()
@@ -103,6 +108,7 @@ public class SpringBootBootstrapLiveTest {
         final Book book = createRandomBook();
         final String location = createBookAsUri(book);
 
+        logger.info("DEL LOC: " + location);
         Response response = RestAssured.delete(location);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
 

@@ -32,14 +32,14 @@ public class BookController {
     private static final Logger logger = LoggerFactory.getLogger(BookController.class);
     // http://localhost:9000/api/books/json
     
-    @GetMapping("/json")
+    @GetMapping("")
     public Iterable<Book> findAll() {
         return bookRepository.findAll();
     }
 
     // http://localhost:9000/api/books/title/SpringBoot%20for%20Dummies/json
     
-    @GetMapping("/title/{bookTitle}/json")
+    @GetMapping("/title/{bookTitle}")
     public List<Book> findByTitle(@PathVariable String bookTitle) {
     	logger.info("Searching: " + bookTitle);
     	
@@ -48,7 +48,7 @@ public class BookController {
 
     // http://localhost:9000/api/books/1/json
     
-    @GetMapping("/{id}/json")
+    @GetMapping("/{id}")
     public Book findOne(@PathVariable long id) {
         return bookRepository.findById(id)
           .orElseThrow(BookNotFoundException::new);
