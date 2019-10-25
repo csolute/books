@@ -10,3 +10,6 @@ This module contains articles about bootstrapping Spring Boot applications.
 - [Deploy a Spring Boot Application to OpenShift](https://www.baeldung.com/spring-boot-deploy-openshift)
 - [Deploy a Spring Boot Application to AWS Beanstalk](https://www.baeldung.com/spring-boot-deploy-aws-beanstalk)
 - [Guide to @SpringBootConfiguration in Spring Boot](https://www.baeldung.com/springbootconfiguration-annotation)
+
+- [GitHub Project](https://github.com/csolute/books)
+- [GitHub Repository](https://github.com/csolute/books.git)
